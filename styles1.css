@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  #weatherApp {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  #cityInput input {
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  #weatherDisplay {
+    margin-top: 20px;
+  }
+  
+  #weatherDisplay img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  #cityList ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #cityList li {
+    margin: 5px;
+    display: inline-block;
+    background-color: #eee;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+  }
+  

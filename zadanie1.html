@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statyczne Inputy</title>
+  <style>
+    .loading {
+      font-weight: bold;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1>Statyczne inputy</h1>
+  
+  <input id="input1" type="number">
+  <input id="input2" type="number">
+  <input id="input3" type="number">
+  <input id="input4" type="number">
+  
+  <div id="results">
+    <p>Sum: <span id="sum">0</span></p>
+    <p>Average: <span id="average">0</span></p>
+    <p>Min: <span id="min">0</span></p>
+    <p>Max: <span id="max">0</span></p>
+  </div>
+
+  <script>
+    
+    function calculateStats() {
+      const inputs = [
+        document.getElementById('input1').value,
+        document.getElementById('input2').value,
+        document.getElementById('input3').value,
+        document.getElementById('input4').value
+      ].map(Number);
+
+      if (inputs.some(isNaN)) {
+  
+        document.getElementById('results').classList.add('loading');
+        return;
+      }
+      
+      
+      const sum = inputs.reduce((acc, curr) => acc + curr, 0);
+      const average = sum / inputs.length;
+      const min = Math.min(...inputs);
+      const max = Math.max(...inputs);
+
+     
+      document.getElementById('sum').textContent = sum;
+      document.getElementById('average').textContent = average;
+      document.getElementById('min').textContent = min;
+      document.getElementById('max').textContent = max;
+
+      document.getElementById('results').classList.remove('loading');
+    }
+
+    
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', calculateStats);
+    });
+  </script>
+</body>
+</html>

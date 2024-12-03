@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrumKit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="drumKit">
+    <div class="keys">
+      <button class="key" id="key1">Q</button>
+      <button class="key" id="key2">W</button>
+      <button class="key" id="key3">E</button>
+      <button class="key" id="key4">A</button>
+      <button class="key" id="key5">S</button>
+      <button class="key" id="key6">D</button>
+      <button class="key" id="key7">Z</button>
+      <button class="key" id="key8">X</button>
+      <button class="key" id="key9">C</button>
+    </div>
+    
+    <div id="recordControls">
+      <button id="record1">Record Channel 1</button>
+      <button id="record2">Record Channel 2</button>
+      <button id="record3">Record Channel 3</button>
+      <button id="record4">Record Channel 4</button>
+      <button id="playAll">Play All</button>
+    </div>
+    
+    <div id="visualization">
+      <h3>Channels</h3>
+      <div id="channel1" class="channel"></div>
+      <div id="channel2" class="channel"></div>
+      <div id="channel3" class="channel"></div>
+      <div id="channel4" class="channel"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pogodynka</title>
+  <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+  <div id="weatherApp">
+    <h1>Pogodynka</h1>
+    
+    <div id="cityInput">
+      <input type="text" id="cityName" placeholder="Podaj nazwę miasta">
+      <button id="addCity">Dodaj miasto</button>
+    </div>
+    
+    <div id="weatherDisplay">
+      <h3 id="cityTitle"></h3>
+      <p id="temperature"></p>
+      <p id="humidity"></p>
+      <p id="pressure"></p>
+      <img id="weatherIcon" src="" alt="weather icon">
+    </div>
+
+    <div id="weatherChart">
+    </div>
+
+    <div id="cityList">
+      <h3>Ostatnio dodane miasta:</h3>
+      <ul id="cities"></ul>
+    </div>
+
+    <script src="appp.js"></script>
+  </div>
+</body>
+</html>

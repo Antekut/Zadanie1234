@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamiczne Inputy</title>
+  <style>
+    .loading {
+      font-weight: bold;
+      color: blue;
+    }
+    .input-container {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dynamiczne Inputy</h1>
+  
+  <label for="numInputs">Liczba inputów: </label>
+  <input id="numInputs" type="number" value="4" min="1">
+
+  <div id="inputsContainer"></div>
+
+  <button id="removeLast">Usuń ostatni input</button>
+
+  <div id="results">
+    <p>Sum: <span id="sum">0</span></p>
+    <p>Average: <span id="average">0</span></p>
+    <p>Min: <span id="min">0</span></p>
+    <p>Max: <span id="max">0</span></p>
+  </div>
+
+  <script>
+    class DynamicInputs {
+      constructor() {
+        this.inputs = [];
+        this.numInputsField = document.getElementById('numInputs');
+        this.inputsContainer = document.getElementById('inputsContainer');
+        this.removeLastButton = document.getElementById('removeLast');
+        this.resultsContainer = document.getElementById('results');
+
+        this.numInputsField.addEventListener('input', this.updateInputs.bind(this));
+        this.removeLastButton.addEventListener('click', this.removeLastInput.bind(this));
+      }
+
+      
+      updateInputs() {
+        const numInputs = Number(this.numInputsField.value);
+        this.inputsContainer.innerHTML = '';
+        this.inputs = [];
+
+        for (let i = 0; i < numInputs; i++) {
+          const inputElement = document.createElement('input');
+          inputElement.type = 'number';
+          inputElement.className = 'input-container';
+          inputElement.addEventListener('input', this.calculateStats.bind(this));
+          this.inputs.push(inputElement);
+          this.inputsContainer.appendChild(inputElement);
+        }
+        this.calculateStats();
+      }
+
+    
+      removeLastInput() {
+        const lastInput = this.inputs.pop();
+        if (lastInput) {
+          lastInput.remove();
+        }
+        this.calculateStats();
+      }
+
+      
+      calculateStats() {
+        const values = this.inputs.map(input => Number(input.value));
+        
+        if (values.some(isNaN)) {
+          this.resultsContainer.classList.add('loading');
+          return;
+        }
+
+        const sum = values.reduce((acc, curr) => acc + curr, 0);
+        const average = sum / values.length;
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+
+        document.getElementById('sum').textContent = sum;
+        document.getElementById('average').textContent = average;
+        document.getElementById('min').textContent = min;
+        document.getElementById('max').textContent = max;
+
+        this.resultsContainer.classList.remove('loading');
+      }
+    }
+    const dynamicInputs = new DynamicInputs();
+    dynamicInputs.updateInputs();
+  </script>
+</body>
+</html>
